@@ -1,5 +1,7 @@
 #ifndef _EXTRINSICREFINEMENT_H_
 #define _EXTRINSICREFINEMENT_H_
+
+#define MYPYR 
 #include <mecl/mecl.h>
 #include <mecl/math/Math.h>
 #include <mecl/core/Matrix3x3.h>
@@ -56,8 +58,11 @@ public:
 	mecl::core::Matrix<float32_t,3,1> R3_to_pyr_Flip(mecl::core::Matrix<float32_t,3,3> &R3);
 	mecl::core::Matrix<float32_t,3,3> pyr_to_R3_Flip(mecl::core::Matrix<float32_t,3,1> &PYR); // pitch/yaw/roll => Rotation matrix
 	mecl::core::Matrix<float32_t,3,3> get_R_C_A(mecl::core::Matrix<float32_t,3,1> &PYR, int CamNum, FILE *fp0);
+#ifndef MYPYR
 	mecl::core::Matrix<float32_t,3,1> get_pyr(mecl::core::Matrix<float32_t,3,3> &R_A_C, int CamNum, FILE *fp0);
-
+#else
+mecl::core::Matrix<float32_t, 3, 1> get_pyr(mecl::core::Matrix<float32_t, 3, 3> &R_A_C, double& pitch, double& yaw, double& roll, int CamNum, FILE *fp0);
+#endif
 public:
 	// Vars
 };

@@ -553,7 +553,12 @@ fprintf(fp0,"Cam 3 Refined_xyz:"); FILE_PrintT__(DatAll[3].Refined_xyz_CamPos, f
 			mecl::core::Matrix<float32_t,3,1> r1 = ExR.R3_to_pyr_Flip(R1);
 			vm_cprintf("Check1:"); PrintT__(r0); PrintT__(r1); PrintR__(DatAll[c].Orig_R_A_C-R1);
 			fprintf(fp0,"Check1:"); FILE_PrintT__(r0,fp0); FILE_PrintT__(r1,fp0); FILE_PrintR_S(DatAll[c].Orig_R_A_C - R1,fp0);
+#ifndef MYPYR
 			mecl::core::Matrix<float32_t,3,1> r2 = ExR.get_pyr(DatAll[c].Orig_R_A_C, c,fp0);
+#else
+			double pitch, yaw, roll;
+			mecl::core::Matrix<float32_t, 3, 1> r2 = ExR.get_pyr(DatAll[c].Orig_R_A_C, pitch, yaw, roll, c, fp0);
+#endif
 			vm_cprintf("Check2:"); PrintT__(r2); PrintT__(DatAll[c].Orig_pyr_CamPos);
 			fprintf(fp0, "Check2:"); FILE_PrintT__(r2, fp0); FILE_PrintT__(DatAll[c].Orig_pyr_CamPos, fp0);
 		}

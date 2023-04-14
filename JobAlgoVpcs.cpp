@@ -1085,8 +1085,14 @@ log_ro.logError_v(logging::LogCtx::c_LogCtxDefault_u32,
 		//MD_DataC.Refined_pyr_CamPos = ECalib.R3_to_pyr(MD_DataC.Refined_RAdjust);
 
 		// MATLAB_MATCH add following 2 lines:
+#ifndef MYPYR
 		MD_DataC.VP3D_pyr_CamPos = ECalib.get_pyr(MD_DataC.VP3D_R_A_C, MD_DataC.CamNum,fp0);
 		MD_DataC.Refined_pyr_CamPos = ECalib.get_pyr(MD_DataC.Refined_R_A_C, MD_DataC.CamNum,fp0);
+#else
+		double pitch, yaw, roll;
+		MD_DataC.VP3D_pyr_CamPos = ECalib.get_pyr(MD_DataC.VP3D_R_A_C, pitch, yaw, roll, MD_DataC.CamNum, fp0);
+		MD_DataC.Refined_pyr_CamPos = ECalib.get_pyr(MD_DataC.Refined_R_A_C, pitch, yaw, roll, MD_DataC.CamNum, fp0);
+#endif
 			
 
 
