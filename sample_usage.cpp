@@ -36,6 +36,7 @@ public:
 #else
 #include "sample_usage.h"
 #include "VanPoints.h"
+#define V6_FLIP
 #include "./src/Vpcs_types.h"
 //#define NOSHOW_TARGET_LINES
 void PrintR__(mecl::core::Matrix<float32_t, 3, 3> &R)
@@ -208,12 +209,27 @@ int main()
 		DatAll[0] = i_jobVpcs.MD_DataC;
 		TargetLines CalibTLines = i_jobVpcs.CalibTLinesC;
 		const uint8_t *ImDIn = i_dataProviderVpcs.getInputImage_pu8(dirname[i],fp0);
-		for (int i=0; i<vpcs::c_ImageSize_u32; i++)
+#ifdef V6_FLIP
 		{
-			DatAll[0].ImD[i] = ImDIn[i]; // Distorted image
-			
+			for (uint32_t i = 0; i < vpcs::c_ImageWidth_u32; i++)
+			{
+				for (uint32_t j = 0; j < vpcs::c_ImageHeight_u32; j++)
+				{
+					DatAll[0].ImD[(vpcs::c_ImageWidth_u32 - 1 - i) + (vpcs::c_ImageHeight_u32 - 1 - j) * vpcs::c_ImageWidth_u32] =
+						ImDIn[i + j * vpcs::c_ImageWidth_u32];
+				}
+			}
 		}
+#else
 		
+		{
+			for (int i = 0; i < vpcs::c_ImageSize_u32; i++)
+			{
+				DatAll[0].ImD[i] = ImDIn[i]; // Distorted image
+
+			}
+		}
+#endif
 	#endif
 #ifdef CYCLETIME
 		auto t2 = high_resolution_clock::now();
@@ -241,12 +257,23 @@ int main()
 	#ifdef OPENCV_OUT
 		DatAll[1] = i_jobVpcs.MD_DataC;
 		ImDIn = i_dataProviderVpcs.getInputImage_pu8(dirname[i], fp0);
-
+#ifdef V6_FLIP
+		{
+			for (uint32_t i = 0; i < vpcs::c_ImageWidth_u32; i++)
+			{
+				for (uint32_t j = 0; j < vpcs::c_ImageHeight_u32; j++)
+				{
+					DatAll[1].ImD[(vpcs::c_ImageWidth_u32 - 1 - i) + (vpcs::c_ImageHeight_u32 - 1 - j) * vpcs::c_ImageWidth_u32] =
+						ImDIn[i + j * vpcs::c_ImageWidth_u32];
+				}
+			}
+		}
+#else
 		for (int i=0; i<vpcs::c_ImageSize_u32; i++)
 		{
 			DatAll[1].ImD[i] = ImDIn[i]; // Distorted image
 		}
-
+#endif
 	#endif
 #ifdef CYCLETIME
 		auto t22 = high_resolution_clock::now();
@@ -283,12 +310,23 @@ int main()
 	#ifdef OPENCV_OUT
 		DatAll[2] = i_jobVpcs.MD_DataC;
 		ImDIn = i_dataProviderVpcs.getInputImage_pu8(dirname[i], fp0);
-
+#ifdef V6_FLIP
+		{
+			for (uint32_t i = 0; i < vpcs::c_ImageWidth_u32; i++)
+			{
+				for (uint32_t j = 0; j < vpcs::c_ImageHeight_u32; j++)
+				{
+					DatAll[2].ImD[(vpcs::c_ImageWidth_u32 - 1 - i) + (vpcs::c_ImageHeight_u32 - 1 - j) * vpcs::c_ImageWidth_u32] =
+						ImDIn[i + j * vpcs::c_ImageWidth_u32];
+				}
+			}
+		}
+#else
 		for (int i=0; i<vpcs::c_ImageSize_u32; i++)
 		{
 			DatAll[2].ImD[i] = ImDIn[i]; // Distorted image
 		}
-
+#endif
 	#endif
 #ifdef CYCLETIME
 		auto t32 = high_resolution_clock::now();
@@ -327,6 +365,12 @@ int main()
 		//	DatAll[3].ImD[i] = ImDIn[i]; // Distorted image
 		//}
 		//if (i == 3)
+#ifdef V6_FLIP
+		for (int i=0; i<vpcs::c_ImageSize_u32; i++)
+		{
+			DatAll[2].ImD[i] = ImDIn[i]; // Distorted image
+		}
+#else
 		{
 			for (uint32_t i = 0; i < vpcs::c_ImageWidth_u32; i++)
 			{
@@ -337,6 +381,7 @@ int main()
 				}
 			}
 		}
+#endif
 	#endif
 #ifdef CYCLETIME
 		auto t42 = high_resolution_clock::now();
@@ -553,14 +598,14 @@ fprintf(fp0,"Cam 3 Refined_xyz:"); FILE_PrintT__(DatAll[3].Refined_xyz_CamPos, f
 			mecl::core::Matrix<float32_t,3,1> r1 = ExR.R3_to_pyr_Flip(R1);
 			vm_cprintf("Check1:"); PrintT__(r0); PrintT__(r1); PrintR__(DatAll[c].Orig_R_A_C-R1);
 			fprintf(fp0,"Check1:"); FILE_PrintT__(r0,fp0); FILE_PrintT__(r1,fp0); FILE_PrintR_S(DatAll[c].Orig_R_A_C - R1,fp0);
-#ifndef MYPYR
+#ifndef V6_FLIP
 			mecl::core::Matrix<float32_t,3,1> r2 = ExR.get_pyr(DatAll[c].Orig_R_A_C, c,fp0);
 #else
 			double pitch, yaw, roll;
 			mecl::core::Matrix<float32_t, 3, 1> r2 = ExR.get_pyr(DatAll[c].Orig_R_A_C, pitch, yaw, roll, c, fp0);
 #endif
-			vm_cprintf("Check2:"); PrintT__(r2); PrintT__(DatAll[c].Orig_pyr_CamPos);
-			fprintf(fp0, "Check2:"); FILE_PrintT__(r2, fp0); FILE_PrintT__(DatAll[c].Orig_pyr_CamPos, fp0);
+			vm_cprintf("Check2:"); PrintT__(r2); PrintT__(DatAll[c].Orig_pyr_CamPos*180.0/M_PI);
+			fprintf(fp0, "Check2:"); FILE_PrintT__(r2, fp0); FILE_PrintT__(DatAll[c].Orig_pyr_CamPos*180.0/M_PI, fp0);
 		}
 
 

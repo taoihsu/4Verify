@@ -2402,7 +2402,8 @@ mecl::core::Matrix<float32_t,3,3> ExRefine::get_R_C_A(mecl::core::Matrix<float32
 	
 	return R_A_C;
 }
-#ifndef MYPYR
+//#ifndef MYPYR
+#if MYPYR == false
 mecl::core::Matrix<float32_t,3,1> ExRefine::get_pyr(mecl::core::Matrix<float32_t,3,3> &R_A_C, int CamNum, FILE *fp0)
 {
 	// MD old format
