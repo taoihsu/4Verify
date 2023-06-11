@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5A41549A-F45F-4D4E-A5B5-4E60CB05376B}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>NotSet</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\..\Bin\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\Bin</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\Library\AppCtrl\Include;..\Library\CanMatbx\inc;..\Library\CanMatbx\libs;..\Library\Fastgraph\Include;..\Library\WTL\Include;..\Library\CMarkup;..\Library\IPP\Include;.\;..\Library\ShareMem\include;..\Library\Matlab\MatlabComputerRuntime\v81\extern\include;..\Library\opencv\include\opencv;..\Library\opencv\include;..\Library\DataCollect\include\;$(ProjectDir)../LibsCrossplat/Camera/core/inc;$(ProjectDir)../LibsCrossplat/Tracker/core/inc;$(ProjectDir)../LibsCrossplat;$(ProjectDir)../LibsCrossplat/MECL;..\Library\CameraModel\Include\;..\Library\Integrator\;..\Library\map\common\;..\Library\MAP\common\Can2MoveData\inc\;..\Library\MeclUtils\;..\Library\Algo\;..\Library\utility;$(ProjectDir)\oc;$(ProjectDir)\Configuration;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\LibsCrossplat\Resize\libs;..\Library\AppCtrl\Lib;..\Library\Fastgraph\Lib;..\Library\IPP\Lib\ia32;..\Library\ShareMem\lib;..\Library\Matlab\MatlabComputerRuntime\v81\extern\lib\win32\microsoft;$(ProjectDir)..\LibsCrossplat\Camera\libs;$(ProjectDir)..\LibsCrossplat\Tracker\libs;..\Library\opencv\lib\Debug;..\Library\CameraModel\Lib\Debug\;..\Library\CanMatbx\libs;..\Library\CanMatbx\inc;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Trackerd.lib;Nafxcwd.lib;Libcmtd.lib;Cam_Windowsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>Nafxcwd.lib;Libcmtd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_FASTSCAN6;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>$(ProjectDir)\oc;..\Library\utility;..\Library\Algo\;..\Library\MeclUtils\;..\Library\MAP\common\Can2MoveData\inc\;..\Library\map\common\;..\Library\Integrator\;..\Library\CameraModel\Include\;$(ProjectDir)../LibsCrossplat/MECL;$(ProjectDir)../LibsCrossplat/;$(ProjectDir)../LibsCrossplat/Tracker/core/inc;$(ProjectDir)../LibsCrossplat/Camera/core/inc;..\Library\DataCollect\include\;..\Library\opencv\include;..\Library\opencv\include\opencv;..\Library\Matlab\MatlabComputerRuntime\v81\extern\include;..\Library\ShareMem\include;.\;..\Library\IPP\Include;..\Library\CMarkup;..\Library\WTL\Include;..\Library\Fastgraph\Include;..\Library\CanMatbx\libs;..\Library\CanMatbx\inc;..\Library\AppCtrl\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\Library\CanMatbx\inc;..\Library\CanMatbx\libs;..\Library\CameraModel\Lib\Release;..\Library\opencv\lib\Release;$(ProjectDir)..\LibsCrossplat\Resize\libs;$(ProjectDir)..\LibsCrossplat\Tracker\libs;$(ProjectDir)..\LibsCrossplat\Camera\libs;..\Library\Matlab\MatlabComputerRuntime\v81\extern\lib\win32\microsoft;..\Library\ShareMem\lib;..\Library\IPP\Lib\ia32;..\Library\Fastgraph\Lib;..\Library\AppCtrl\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Nafxcw.lib;Libcmt.lib;Cam_Windows.lib;Resize.lib;Tracker.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Library\AppCtrl\Source\ProcessorThread.cpp" />
+    <ClCompile Include="..\Library\AppCtrl\Source\T_DataLock.cpp" />
+    <ClCompile Include="..\Library\DataCollect\src\Graph2Xml.cpp" />
+    <ClCompile Include="cfg\AppCfg.cpp" />
+    <ClCompile Include="Configuration\OCCfg.cpp" />
+    <ClCompile Include="DataCollectAgent.cpp" />
+    <ClCompile Include="DataProviderOC.cpp" />
+    <ClCompile Include="OC.cpp" />
+    <ClCompile Include="OCImpl.cpp" />
+    <ClCompile Include="OCImplConfig.cpp" />
+    <ClCompile Include="oc\armNEON.cpp" />
+    <ClCompile Include="oc\configuration.cpp" />
+    <ClCompile Include="oc\featureCollection.cpp" />
+    <ClCompile Include="oc\featureCollectionCfg.cpp" />
+    <ClCompile Include="oc\featureCollectionImpl.cpp" />
+    <ClCompile Include="oc\featureCollectionImplCfg.cpp" />
+    <ClCompile Include="oc\featureFilter.cpp" />
+    <ClCompile Include="oc\featureFilterCfg.cpp" />
+    <ClCompile Include="oc\JobOc.cpp" />
+    <ClCompile Include="oc\kinematicModel.cpp" />
+    <ClCompile Include="oc\kinematicModelCameraImpl.cpp" />
+    <ClCompile Include="oc\kinematicModelCfg.cpp" />
+    <ClCompile Include="oc\kinematicModelImpl.cpp" />
+    <ClCompile Include="oc\localFeatureCollector.cpp" />
+    <ClCompile Include="oc\localFeatureCollectorCfg.cpp" />
+    <ClCompile Include="oc\mathNEON.cpp" />
+    <ClCompile Include="oc\mathOperations.cpp" />
+    <ClCompile Include="oc\structureFromMotion.cpp" />
+    <ClCompile Include="oc\tscAlg.cpp" />
+    <ClCompile Include="oc\tscAlgCfg.cpp" />
+    <ClCompile Include="oc\tscAlgImpl.cpp" />
+    <ClCompile Include="oc\tscAlgImplCfg.cpp" />
+    <ClCompile Include="oc\tscApi.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Library\AppCtrl\Include\FrameProcessStatus.h" />
+    <ClInclude Include="..\Library\AppCtrl\Include\OCIntf.h" />
+    <ClInclude Include="..\Library\AppCtrl\Include\ThreadProcessStatus.h" />
+    <ClInclude Include="..\Library\AppCtrl\Include\TracerDB.h" />
+    <ClInclude Include="..\Library\AppCtrl\Include\T_DataLock.h" />
+    <ClInclude Include="..\Library\DataCollect\include\Graph2Xml.h" />
+    <ClInclude Include="..\LibsCrossplat\MECL\meclcfg.h" />
+    <ClInclude Include="Configuration\OCCfgDefinition.h" />
+    <ClInclude Include="Configuration\OCCfg.h" />
+    <ClInclude Include="DataCollectAgent.h" />
+    <ClInclude Include="DataProviderOC.h" />
+    <ClInclude Include="OCDef.h" />
+    <ClInclude Include="IDataProviderOC.h" />
+    <ClInclude Include="OC.h" />
+    <ClInclude Include="OCData.h" />
+    <ClInclude Include="OCImpl.h" />
+    <ClInclude Include="OCStructs.h" />
+    <ClInclude Include="oc\armNEON.h" />
+    <ClInclude Include="oc\Array.h" />
+    <ClInclude Include="oc\ArrayList.h" />
+    <ClInclude Include="oc\cameraModel.h" />
+    <ClInclude Include="oc\cameraModelMecl.h" />
+    <ClInclude Include="oc\Collection.h" />
+    <ClInclude Include="oc\common.h" />
+    <ClInclude Include="oc\configuration.h" />
+    <ClInclude Include="oc\dbgGPIO.h" />
+    <ClInclude Include="oc\featureCollection.h" />
+    <ClInclude Include="oc\featureCollectionImpl.h" />
+    <ClInclude Include="oc\featureCollectionStructs.h" />
+    <ClInclude Include="oc\featureFilter.h" />
+    <ClInclude Include="oc\Helpers.h" />
+    <ClInclude Include="oc\JobOc.h" />
+    <ClInclude Include="oc\kinematicModel.h" />
+    <ClInclude Include="oc\kinematicModelCameraImpl.h" />
+    <ClInclude Include="oc\kinematicModelImpl.h" />
+    <ClInclude Include="oc\localFeatureCollector.h" />
+    <ClInclude Include="oc\LogCtxOC.h" />
+    <ClInclude Include="oc\mathNEON.h" />
+    <ClInclude Include="oc\mathOperations.h" />
+    <ClInclude Include="oc\module.h" />
+    <ClInclude Include="oc\moduleImpl.h" />
+    <ClInclude Include="oc\point_oc.h" />
+    <ClInclude Include="oc\ss.h" />
+    <ClInclude Include="oc\structureFromMotion.h" />
+    <ClInclude Include="oc\tracing.h" />
+    <ClInclude Include="oc\tscAlg.h" />
+    <ClInclude Include="oc\tscAlgImpl.h" />
+    <ClInclude Include="oc\tscAlgStructs.h" />
+    <ClInclude Include="oc\tscApi.h" />
+    <ClInclude Include="oc\tscDebugApi.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="version.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\Library\AppCtrl\Lib\TracerDB.lib" />
+    <Library Include="..\Library\AppCtrl\Lib\VIDFileEx.lib" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

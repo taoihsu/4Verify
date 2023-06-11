@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Library Files">
+      <UniqueIdentifier>{f5cd38c6-e502-49f3-8f20-24caf5d21fd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library Files\Source">
+      <UniqueIdentifier>{21a2ca1f-97f3-44e8-852b-e2f4a3d6dae5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library Files\Include">
+      <UniqueIdentifier>{0ae8b3ab-8251-41a8-918a-6d35af048ae3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library Files\Lib">
+      <UniqueIdentifier>{33dbc931-52a2-4396-9b58-1cd4fea14413}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools">
+      <UniqueIdentifier>{81ae3195-936a-4050-996b-34134e5934da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Configuration">
+      <UniqueIdentifier>{8bbac97c-ac7c-40d2-ba83-15c2febf2ece}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cfg\AppCfg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\armNEON.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\configuration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\featureCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\featureCollectionCfg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\featureCollectionImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\featureCollectionImplCfg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\featureFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\featureFilterCfg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\JobOc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\kinematicModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\kinematicModelCameraImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\kinematicModelCfg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\kinematicModelImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\localFeatureCollector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\localFeatureCollectorCfg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\mathOperations.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\structureFromMotion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\tscAlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\tscAlgCfg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\tscAlgImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\tscAlgImplCfg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\tscApi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oc\mathNEON.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OCImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DataCollectAgent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\AppCtrl\Source\T_DataLock.cpp">
+      <Filter>Library Files\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\AppCtrl\Source\ProcessorThread.cpp">
+      <Filter>Library Files\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DataProviderOC.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="OCImplConfig.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Configuration\OCCfg.cpp">
+      <Filter>Source Files\Configuration</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\DataCollect\src\Graph2Xml.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="oc\armNEON.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\Array.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\ArrayList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\cameraModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\cameraModelMecl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\Collection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\configuration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\dbgGPIO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\featureCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\featureCollectionImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\featureCollectionStructs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\featureFilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\Helpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\JobOc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\kinematicModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\kinematicModelCameraImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\kinematicModelImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\localFeatureCollector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\LogCtxOC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\mathNEON.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\mathOperations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\module.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\moduleImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\structureFromMotion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\tracing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\tscAlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\tscAlgImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\tscAlgStructs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\tscApi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\tscDebugApi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OCImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataCollectAgent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\AppCtrl\Include\OCIntf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\AppCtrl\Include\TracerDB.h">
+      <Filter>Library Files\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\AppCtrl\Include\T_DataLock.h">
+      <Filter>Library Files\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\AppCtrl\Include\ThreadProcessStatus.h">
+      <Filter>Library Files\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\AppCtrl\Include\FrameProcessStatus.h">
+      <Filter>Library Files\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="IDataProviderOC.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="DataProviderOC.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="OCData.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\LibsCrossplat\MECL\meclcfg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OCStructs.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="OCDef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\point_oc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuration\OCCfg.h">
+      <Filter>Source Files\Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuration\OCCfgDefinition.h">
+      <Filter>Source Files\Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\DataCollect\include\Graph2Xml.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oc\ss.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\Library\AppCtrl\Lib\TracerDB.lib">
+      <Filter>Library Files\Lib</Filter>
+    </Library>
+    <Library Include="..\Library\AppCtrl\Lib\VIDFileEx.lib">
+      <Filter>Library Files\Lib</Filter>
+    </Library>
+  </ItemGroup>
+</Project>
