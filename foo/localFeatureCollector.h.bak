@@ -1,0 +1,337 @@
+// ----------------------------------------------------------------------------
+// --- Written by Ehsan Parvizi [17-Jul-2014]
+// --- Modified by Ehsan Parvizi [09-Oct-2014]
+// --- Modified by Hany Kashif [31-Oct-2014]
+// --- Copyright (c) Magna Vectrics (MEVC) 2014
+// ----------------------------------------------------------------------------
+#ifndef __LOCALFEATURECOLLECTOR_H_
+#define __LOCALFEATURECOLLECTOR_H_
+// ----------------------------------------------------------------------------
+#include "mathOperations.h"
+#include "featureCollectionStructs.h"
+#define restrict
+// ----------------------------------------------------------------------------
+namespace lfc
+{
+    class LFCParams
+    {
+    public:
+        LFCParams()
+            : numPickedROIs_u32( 0 )
+            , numPatchesPerROI_u32( 0 )
+            , randomPatches_b( false )
+            , detectionFrameSkip_u32( 0 )
+            , trackLength_u32( 0 )
+            , searchRadius_u32( 0 )
+            , trackerThresh1_u32( 0 )
+            , trackerThresh2_u32( 0 )
+            , trackUsingMAD_b( true )
+            , numROIPools_u32( 0 )
+            , numROIsPerPool_u32( 0 )
+            , cycleThroughROIs_b( false )
+        {
+            // Using initialization lists
+        }
+
+        uint32_t getNmPckdROIs_u32( void ) const
+        {
+            return numPickedROIs_u32;
+        }
+        uint32_t getNmPtchsPrROI_u32( void ) const
+        {
+            return numPatchesPerROI_u32;
+        }
+        tsc_math::ROISize getPtchSz_t( void ) const
+        {
+            return patchSize_t;
+        }
+        bool_t getRndmPtchs_b( void ) const
+        {
+            return randomPatches_b;
+        }
+        uint32_t getDtctnFrmSkp_u32( void ) const
+        {
+            return detectionFrameSkip_u32;
+        }
+        uint32_t getTrckLngth_u32( void ) const
+        {
+            return trackLength_u32;
+        }
+        uint32_t getSrchRds_u32( void ) const
+        {
+            return searchRadius_u32;
+        }
+        uint32_t getTrckrThrsh1_u32( void ) const
+        {
+            return trackerThresh1_u32;
+        }
+        uint32_t getTrckrThrsh2_u32( void ) const
+        {
+            return trackerThresh2_u32;
+        }
+        bool_t getTrckUsngMAD_b( void ) const
+        {
+            return trackUsingMAD_b;
+        }
+        uint32_t getNmROIPls_u32( void ) const
+        {
+            return numROIPools_u32;
+        }
+        uint32_t getNmROIsPrPl_u32( void ) const
+        {
+            return numROIsPerPool_u32;
+        }
+        bool_t getCyclThrghROIs_b( void ) const
+        {
+            return cycleThroughROIs_b;
+        }
+
+        void putNmPckdROIs_v( uint32_t i_Param_u32 )
+        {
+            numPickedROIs_u32 = i_Param_u32;
+        }
+        void putNmPtchsPrROI_v( uint32_t i_Param_u32 )
+        {
+            numPatchesPerROI_u32 = i_Param_u32;
+        }
+        void putPtchSz_v( uint8_t i_ParamW_u8, uint8_t i_ParamH_u8 )
+        {
+            patchSize_t.width_s32 = i_ParamW_u8;
+            patchSize_t.height_s32 = i_ParamH_u8;
+        }
+        void putRndmPtchs_v( bool_t i_Param_b )
+        {
+            randomPatches_b = i_Param_b;
+        }
+        void putDtctnFrmSkp_v( uint32_t i_Param_u32 )
+        {
+            detectionFrameSkip_u32 = i_Param_u32;
+        }
+        void putTrckLngth_v( uint32_t i_Param_u32 )
+        {
+            trackLength_u32 = i_Param_u32;
+        }
+        void putSrchRds_v( uint32_t i_Param_u32 )
+        {
+            searchRadius_u32 = i_Param_u32;
+        }
+        void putTrckThrsh1_v( uint32_t i_Param_u32 )
+        {
+            trackerThresh1_u32 = i_Param_u32;
+        }
+        void putTrckThrsh2_v( uint32_t i_Param_u32 )
+        {
+            trackerThresh2_u32 = i_Param_u32;
+        }
+        void putTrckUsngMAD_v( bool_t i_Param_b )
+        {
+            trackUsingMAD_b = i_Param_b;
+        }
+        void putNmROIPls_v( uint32_t i_Param_u32 )
+        {
+            numROIPools_u32 = i_Param_u32;
+        }
+        void putNmROIsPrPl_v( uint32_t i_Param_u32 )
+        {
+            numROIsPerPool_u32 = i_Param_u32;
+        }
+        void putCyclThrghROIs_v( bool_t i_Param_b )
+        {
+            cycleThroughROIs_b = i_Param_b;
+        }
+
+        mecl::core::ArrayList< uint32_t, tscApi::NUM_SPEED_RANGES >& getspdRngs_rx( void )
+        {
+            return speedRanges_x;
+        }
+        mecl::core::ArrayList< uint32_t, tscApi::NUM_SPEED_RANGES >& gettrckngFrmSkps_rx( void )
+        {
+            return trackingFrameSkips_x;
+        }
+        mecl::core::Array < tsc_math::ROIRect, tsc_cfg::NUM_AVAILABLE_ROIS>& getavlblROIs_rx( void )
+        {
+            return availableROIs_x;
+        }
+        mecl::core::Array < uint32_t, tsc_cfg::NUM_AVAILABLE_ROIS>& getrPrfrmncs_rx( void )
+        {
+            return roiPerformances_x;
+        }
+        mecl::core::Array < uint32_t, tsc_cfg::NUM_AVAILABLE_ROIS>* getAddrrPrfrmncs_px( void )
+        {
+            return &roiPerformances_x;
+        }
+
+
+    private:
+        mecl::core::ArrayList< uint32_t, tscApi::NUM_SPEED_RANGES > speedRanges_x;
+        mecl::core::ArrayList< uint32_t, tscApi::NUM_SPEED_RANGES > trackingFrameSkips_x;
+        mecl::core::Array < tsc_math::ROIRect, tsc_cfg::NUM_AVAILABLE_ROIS> availableROIs_x;
+        mecl::core::Array < uint32_t, tsc_cfg::NUM_AVAILABLE_ROIS> roiPerformances_x;
+        uint32_t numPickedROIs_u32;
+        uint32_t numPatchesPerROI_u32;
+        tsc_math::ROISize patchSize_t;
+        bool_t randomPatches_b;
+        uint32_t detectionFrameSkip_u32;
+        uint32_t trackLength_u32;
+        uint32_t searchRadius_u32;
+        uint32_t trackerThresh1_u32;
+        uint32_t trackerThresh2_u32;
+        bool_t trackUsingMAD_b;
+        uint32_t numROIPools_u32;
+        uint32_t numROIsPerPool_u32;
+        bool_t cycleThroughROIs_b;
+    };
+
+    // --- LocalFeatureCollector
+    class LocalFeatureCollector
+    {
+    public:
+        LocalFeatureCollector();
+        ~LocalFeatureCollector();
+
+        bool_t Init( tscApi::enuCameraID i_CameraID_t, fc::ROI* i_ROI_po, uint16_t i_VideoWidth_u16, uint16_t i_VideoHeight_u16, const uint8_t* i_Img_pu8, km::KinematicModelCameraImpl* i_KinematicModelCameraImpl_po, fc::DiagnosticData* i_DiagnosticData_po );
+        bool_t Process( uint32_t i_CurrFrameNum_u32, float32_t i_Speed_f32, bool_t i_CameraFrontOpen_b, const uint8_t* i_Img_pu8 );
+
+        camera_model::CameraModelMecl* getCameraObject()
+        {
+            return pCameraModel_po;
+        }
+        fc::LocalFeatureTrackCollection* getLocalFeatureTrackCollection_po()
+        {
+            return ( &localTrackList_o );
+        }
+        bool_t resetAllLocalFeatureTracks_b();
+        // --- get track length threshold
+        uint32_t getTrackLengthThreshold_u32() const
+        {
+            return params_o.getTrckLngth_u32();
+        }
+
+        // --- update ROI performance based on the feature collection
+        uint32_t updateROIPerformance_u32( uint32_t i_RoiIdx_u32, bool_t i_Good_b )
+        {
+            uint32_t v_Performance_u32;
+
+            if( i_Good_b )
+            {
+                params_o.getrPrfrmncs_rx()[ i_RoiIdx_u32 ] ++;
+                v_Performance_u32 =  params_o.getrPrfrmncs_rx()[ i_RoiIdx_u32 ];
+            }
+            else
+            {
+                params_o.getrPrfrmncs_rx()[ i_RoiIdx_u32 ] --;
+                v_Performance_u32 = params_o.getrPrfrmncs_rx()[ i_RoiIdx_u32 ];
+            }
+
+            // didn't perform well
+            return v_Performance_u32;
+        }
+        const mecl::core::Array < uint32_t, tsc_cfg::NUM_AVAILABLE_ROIS>* GetROIPerformances( )
+        {
+            return params_o.getAddrrPrfrmncs_px();
+        }
+        bool_t UpdateExternalConfiguration( tscApi::enuCameraID i_CameraID_t );
+        bool_t ValidateROIRect( const tsc_math::ROIRect& i_Rect_rt ) const;
+
+    private:
+        // ---
+        bool_t CreateFeatureTrack( uint32_t i_RoiIdx_u32, const tsc_math::ROIRect& i_Patch_rt );
+        // ---
+        void terminateLostTracks_v();
+        // ---
+        bool_t PredictImageCoordinatesStraight( const fc::Point& i_WarpedPtImg1_rt, float64_t i_DeltaX_f64, float64_t i_DeltaY_f64, fc::Point& o_WarpedPtImg2_rt, fc::Pointd& b_UnwarpedPt1_rx ) const;
+        // ---
+#ifdef stringstream
+        // SB
+        bool_t AppendToLogFile( const std::stringstream& ss ) const;
+#endif
+        // ---
+        bool_t detectFeatures_b();
+        // ---
+        bool_t trackFeatures_b();
+        // ---
+        bool_t MeetsDrivingConstraints( bool i_CameraFrontOpen_b );
+        // ---
+        bool_t applyBlockMatching_b( fc::FeatureTrack& i_Track_ro, uint32_t i_Thresh1_u32, uint32_t i_Thresh2_u32, fc::Point& o_Next_rt, float32_t& o_MatchedDistance_rf32 ) const;
+        // ---
+        bool_t FindBlockSAD( \
+                             const uint8_t* restrict i_SrcImg_pu8, sint32_t i_SrcStep_s32,  \
+                             const uint8_t* restrict i_RefImg_pu8, sint32_t i_RefStep_s32,  \
+                             sint32_t i_SlideX_s32, sint32_t i_SlideY_s32, fc::Point& o_PT_rt, uint32_t& o_MinDist_ru32 ) const;
+
+        // ---
+        bool_t FindBlockCorrelation( \
+                                     const uint8_t* restrict i_SrcImg_pu8, sint32_t i_SrcStep_s32,  \
+                                     const uint8_t* restrict i_RefImg_pu8, sint32_t i_refStep_s32,  \
+                                     sint32_t i_SlideX_s32, sint32_t i_SlideY_s32, fc::Point& o_PT_rt, float32_t& o_MaxCorr_rf32 ) const;
+
+        bool_t loadConfiguration_b();
+        bool_t ComputeSfM( fc::FeatureTrack& b_FT_ro ) const;
+
+        // --- Log feature track into file
+        bool_t LogTrack( fc::FeatureTrack& ft );
+
+        fc::MotionVector motionVector_o;
+
+        LFCParams params_o;
+
+        mecl::core::Array < uint32_t, tsc_cfg::MAX_NUM_PICKED_ROIS > pickedROIs_x;
+
+        uint32_t patchRadius_u32;
+
+        fc::ROI* pROI_po;
+        bool_t initOK_b;
+        const uint8_t* c_Img_pu8;
+        sint64_t hTracer_s64;
+        uint32_t currFrameNum_u32;
+#ifdef USE_SVSCM
+        camera_model::CameraModel* pCameraModel_po;
+#else
+        camera_model::CameraModelMecl* pCameraModel_po;
+#endif
+        bool_t shouldPickROIs_b;
+        uint32_t nextDetectionFrame_u32;
+        uint32_t currTrackFrameSkip_u32;
+
+        tsc_math::ROISize frameSize_t;
+#ifdef string
+        std::string m_LFC_ID;
+#endif
+        tscApi::enuCameraID cameraID_t;
+        fc::LocalFeatureTrackCollection localTrackList_o;
+        mecl::core::ArrayList <fc::FeatureTrack, tsc_cfg::NUM_TRACKS> tempTracks_x;
+        km::KinematicModelCameraImpl* pKinematicModelCameraImpl_po;
+        fc::DiagnosticData* pDiagnosticData_po;
+
+        enum BlockMatchAlgoEnum_e
+        {
+            e_BmaCcnl16x16 = 0,              // generic C, platform independent
+            e_BmaCcnl16x16OnePass,            // one pass generic C, platform independent
+            e_BmaCcnl16x16Neon1PassOrig,  // one pass generic C, platform independent
+            e_BmaCcnl16x16Neon1PassOpt,   // one pass generic C, platform independent
+            e_BmaCcnl16x16NeonS8Orig,     // close to ALGO, but mean is rounded to u8
+            e_BmaCcnl16x16NeonS8Opt,      // close to ALGO, but mean is rounded to u8, hand-craft optimised
+            e_BmaCcnl16x16NeonF32Orig,    // as close to ALGO as possible,
+            e_BmaCcnl16x16NeonF32Opt,     // as close to ALGO as possible, hand-craft optimised
+            e_BmaCcn16x16NeonS8QuickOrig, // integer, 1-pass, normalised, but no mean subtraction, quickest
+            e_BmaSAD16x16,                   // generic C, platform independent
+            e_BmaSAD16x16NeonOrig,         // readable code
+            e_BmaSAD16x16NeonOpt           // hand-craft optimised code
+        };
+
+        // Logging
+        tscApi::enuCameraID tscCameraTargetID;
+        std::string m_logFileName;
+        std::stringstream m_logStream;
+        std::stringstream m_logHeader;
+
+        std::string m_trackFileName;
+        std::stringstream m_tracksStream;
+        std::stringstream m_tracksHeader;
+
+        uint32_t m_trackNum;
+
+    };
+}
+// ----------------------------------------------------------------------------
+#endif
